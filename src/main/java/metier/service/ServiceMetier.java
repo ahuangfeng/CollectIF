@@ -212,6 +212,15 @@ public class ServiceMetier {
 
     }
 
+    //new!
+    public static Activite consulterActiviteById(long id) throws Exception{
+        JpaUtil.creerEntityManager();
+        ActiviteDAO adao = new ActiviteDAO();
+        Activite act = adao.findById(id);
+        JpaUtil.fermerEntityManager();
+        return act;
+    }
+    
     public static void affecterPaf(int idEVT, int montant) throws Exception {
         JpaUtil.creerEntityManager();
         JpaUtil.ouvrirTransaction();
